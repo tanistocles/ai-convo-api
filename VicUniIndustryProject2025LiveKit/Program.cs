@@ -33,17 +33,20 @@ Console.WriteLine("Running");
 // Azure database store
 // --------------------------------------------------------------------
 
-var employees = new List<Employee>();
+var employees = new List<Employee>
+{
+    new Employee(1, "tan", "tan@gmail.com", 1234),
+};
 var visitors = new List<Visitor>();
 
 // Preload employees data at startup
-app.Lifetime.ApplicationStarted.Register(async () =>
-{
-    using var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<ChatDbContext>();
-    employees = await dbContext.Employees.ToListAsync();
-    visitors = await dbContext.Visitors.ToListAsync();
-});
+//app.Lifetime.ApplicationStarted.Register(async () =>
+//{
+//    using var scope = app.Services.CreateScope();
+//    var dbContext = scope.ServiceProvider.GetRequiredService<ChatDbContext>();
+//    employees = await dbContext.Employees.ToListAsync();
+//    visitors = await dbContext.Visitors.ToListAsync();
+//});
 
 
 // This can represent companies whose contractors are approved
