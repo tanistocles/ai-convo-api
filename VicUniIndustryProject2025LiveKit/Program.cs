@@ -73,6 +73,12 @@ app.MapGet("/weatherforecast", () =>
 // New Visitor Management Endpoints
 // --------------------------------------------------------------------
 
+app.MapGet("/products", async (ChatService chatService) =>
+{
+    return await chatService.GetAllProductAsync();
+})
+.WithName("Get All Products")
+.WithOpenApi();
 
 app.MapGet("/employees", async (ChatService chatService) =>
 {
@@ -150,7 +156,7 @@ app.MapPost("/visitors/arrive-contractor", async (ChatService chatService, Visit
 
 app.MapPost("/visitors/sign-out", async (ChatDbContext _context, VisitorSignOutRequest request) =>
 {
-    
+
 })
 .WithName("VisitorSignOut")
 .WithOpenApi();
