@@ -35,6 +35,10 @@ namespace VicUniIndustryProject2025LiveKit
                 await dbContext.SaveChangesAsync();
             }
         }
+        public async Task<List<Product>> GetAllProductAsync()
+        {
+            return await dbContext.Products.ToListAsync();
+        }
 
         public async Task<List<Employee>> GetAllEmployeesAsync()
         {
@@ -43,7 +47,7 @@ namespace VicUniIndustryProject2025LiveKit
 
         public async Task<List<Visitor>> GetAllVisitorsAsync()
         {
-            return await dbContext.Visitors.ToListAsync();  
+            return await dbContext.Visitors.ToListAsync();
         }
 
         public async Task<List<Visitor>> GetVisitorsOnSiteAsync()
@@ -132,7 +136,7 @@ namespace VicUniIndustryProject2025LiveKit
             if (!isApproved)
             {
                 return new VisitorArriveContractorResult
-                { 
+                {
                     Approved = false,
                     Message = $"Contractor's company '{request.Company}' is not approved."
                 };
@@ -183,7 +187,7 @@ namespace VicUniIndustryProject2025LiveKit
                 {
                     Approved = false,
                     Message = $"Visitor '{visitor.Name}' is not on site."
-                };              
+                };
             }
 
             visitor.IsOnSite = false;

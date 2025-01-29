@@ -2,7 +2,7 @@
 
 namespace VicUniIndustryProject2025LiveKit
 {
-    public class ChatDbContext: DbContext
+    public class ChatDbContext : DbContext
     {
         public ChatDbContext()
         {
@@ -11,6 +11,8 @@ namespace VicUniIndustryProject2025LiveKit
 
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
         //public DbSet<VisitorArriveContractorRequest> VisitorArriveContractorRequests { get; set; }
         //public DbSet<VisitorArriveCourierRequest> VisitorArriveCourierRequests { get; set; }
