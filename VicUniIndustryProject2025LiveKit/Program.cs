@@ -17,6 +17,23 @@ builder.Services.AddDbContext<ChatDbContext>(options =>
 builder.Services.AddScoped<ChatDbContext>();
 
 
+//IN MEMORY TO TEST FIRST
+var employees = new List<Employee>
+            {
+                new Employee(4, "Tan", "tan@gmail.com", 4567),
+                new Employee(2, "Bob", "bob@example.com", 2345),
+                new Employee(1, "Alice", "alice@example.com", 1234),
+                new Employee(3, "Charlie", "charlie@example.com", 3456)
+            };
+
+var products = new List<Product>
+{
+    new Product(1, "MacBook", "Brand new MacBook that is slick but weak"),
+    new Product(2, "ThinkPad", "Old but sturdy laptop that look hideous")
+};
+
+
+
 var app = builder.Build();
 
 // Configure Swagger for development
@@ -75,6 +92,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/products", async (ChatService chatService) =>
 {
+    return products;
     return await chatService.GetAllProductAsync();
 })
 .WithName("Get All Products")
@@ -82,7 +100,8 @@ app.MapGet("/products", async (ChatService chatService) =>
 
 app.MapGet("/employees", async (ChatService chatService) =>
 {
-    return await chatService.GetAllEmployeesAsync();
+    return employees;
+    //return await chatService.GetAllEmployeesAsync();
 })
 .WithName("GetAllEmployees")
 .WithOpenApi();
