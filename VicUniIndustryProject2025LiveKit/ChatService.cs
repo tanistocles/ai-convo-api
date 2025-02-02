@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VicUniIndustryProject2025LiveKit.EditableModels;
+using VicUniIndustryProject2025LiveKit.Results;
 
 namespace VicUniIndustryProject2025LiveKit
 {
@@ -48,6 +50,11 @@ namespace VicUniIndustryProject2025LiveKit
         public async Task<List<Visitor>> GetAllVisitorsAsync()
         {
             return await dbContext.Visitors.ToListAsync();
+        }
+
+        public async Task<List<OnSite>> GetAllOnSiteAsync()
+        {
+            return await dbContext.OnSites.ToListAsync();
         }
 
         public async Task<List<Visitor>> GetVisitorsOnSiteAsync()

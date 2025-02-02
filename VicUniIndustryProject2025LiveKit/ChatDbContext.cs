@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VicUniIndustryProject2025LiveKit.EditableModels;
 
 namespace VicUniIndustryProject2025LiveKit
 {
@@ -12,11 +13,6 @@ namespace VicUniIndustryProject2025LiveKit
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Product> Products { get; set; }
-
-
-        //public DbSet<VisitorArriveContractorRequest> VisitorArriveContractorRequests { get; set; }
-        //public DbSet<VisitorArriveCourierRequest> VisitorArriveCourierRequests { get; set; }
-        //public DbSet<VisitorArriveMeetingRequest> VisitorArriveMeetingRequests { get; set; }
-        //public DbSet <VisitorSignOutRequest> VisitorSignOutRequests { get; set; }
+        public DbSet<OnSite> OnSites { get; set; }
     }
 }

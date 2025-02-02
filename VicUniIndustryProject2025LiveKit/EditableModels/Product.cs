@@ -1,6 +1,6 @@
 using Microsoft.Identity.Client;
 
-namespace VicUniIndustryProject2025LiveKit
+namespace VicUniIndustryProject2025LiveKit.EditableModels
 {
     public class Product
     {

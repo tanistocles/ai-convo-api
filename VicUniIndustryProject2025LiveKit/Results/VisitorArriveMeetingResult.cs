@@ -1,4 +1,4 @@
-﻿namespace VicUniIndustryProject2025LiveKit
+﻿namespace VicUniIndustryProject2025LiveKit.Results
 {
     public class VisitorArriveMeetingResult
     {

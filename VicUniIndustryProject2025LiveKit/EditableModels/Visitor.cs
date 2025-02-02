@@ -1,8 +1,8 @@
-﻿namespace VicUniIndustryProject2025LiveKit
+﻿namespace VicUniIndustryProject2025LiveKit.EditableModels
 {
     public class Visitor
     {
-    
+
         public Visitor(string Name, DateTime ArrivalTime, bool IsOnSite, string Reason, string? MeetingWith, string? ContractorCompany, DateTime? DepartureTime)
         {
             this.Name = Name;
@@ -14,9 +14,9 @@
             this.DepartureTime = DepartureTime;
         }
 
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime ArrivalTime { get; set; }  
+        public DateTime ArrivalTime { get; set; }
         public bool IsOnSite { get; set; }
         public string Reason { get; set; }
         public string? MeetingWith { get; set; }

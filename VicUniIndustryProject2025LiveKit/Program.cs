@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 using VicUniIndustryProject2025LiveKit;
+using VicUniIndustryProject2025LiveKit.EditableModels;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -114,6 +115,13 @@ app.MapGet("/visitors", async (ChatService chatService) =>
 .WithName("GetAllVisitors")
 .WithOpenApi();
 
+app.MapGet("/on_site", async (ChatService chatService) =>
+{
+    return await chatService.GetAllOnSiteAsync();
+})
+.WithName("GetAllOnSite")
+.WithOpenApi();
+
 
 app.MapGet("/visitors/on-site", async (ChatService chatService) =>
 {
@@ -155,8 +163,6 @@ app.MapPost("/visitors/arrive-courier", async (ChatService chatService, VisitorA
 .WithOpenApi();
 
 
-
-//EXAMPLE
 app.MapPost("/visitors/arrive-contractor", async (ChatService chatService, VisitorArriveContractorRequest request) =>
 {
     var result = await chatService.VisitorArriveContractorAsync(request);
@@ -205,21 +211,11 @@ internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary
 // --------------------------------------------------------------------
 // Entities
 // --------------------------------------------------------------------
-public record Employee(int Id, string Name, string Email);
 
-/// <summary>
-/// Represents a visitor's record in memory.
-/// </summary>
-//public record Visitor(
-//    int Id,
-//    string Name,
-//    DateTime ArrivalTime,
-//    bool IsOnSite,
-//    string Reason,             // e.g., "Meeting", "Courier", "Contractor"
-//    string? MeetingWith,       // If reason is "Meeting", store employee's name
-//    string? ContractorCompany, // If reason is "Contractor"
-//    DateTime? DepartureTime    // Track when visitor leaves
-//);
+//RECORD ONLY DATA GOES HERE
+public record Employee(int Id, string Name, string Email);
+public record OnSite(int Id, string Name, string Type);
+
 
 
 
@@ -257,4 +253,8 @@ public record VisitorArriveContractorRequest(
 /// </summary>
 public record VisitorSignOutRequest(
     int VisitorId
+);
+
+public record OnSiteRequest(
+    string Name
 );
