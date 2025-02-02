@@ -64,8 +64,7 @@ namespace VicUniIndustryProject2025LiveKit
 
         public async Task<VisitorArriveMeetingResult> VisitorArriveMeetingAsync(VisitorArriveMeetingRequest request)
         {
-            var employee = await dbContext.Employees.FirstOrDefaultAsync(e => e.Name.Equals(request.MeetingWith,
-            StringComparison.OrdinalIgnoreCase));
+            var employee = await dbContext.Employees.FirstOrDefaultAsync(e => e.Name.ToLower().Equals(request.MeetingWith.ToLower()));
 
             if (employee == null)
             {
@@ -138,7 +137,7 @@ namespace VicUniIndustryProject2025LiveKit
         {
             // Check if the contractor's company is in the approved list
             var isApproved = approvedContractorCompanies.Any(c =>
-                c.Equals(request.Company, StringComparison.OrdinalIgnoreCase));
+                c.ToLower().Equals(request.Company.ToLower()));
 
             if (!isApproved)
             {

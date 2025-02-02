@@ -1,4 +1,7 @@
-﻿namespace VicUniIndustryProject2025LiveKit.EditableModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace VicUniIndustryProject2025LiveKit.EditableModels
 {
     public class Visitor
     {
@@ -14,6 +17,8 @@
             this.DepartureTime = DepartureTime;
         }
 
+        [Key] // Ensures it's the primary key
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Ensures auto-increment behavior
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime ArrivalTime { get; set; }
