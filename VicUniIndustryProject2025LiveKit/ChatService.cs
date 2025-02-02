@@ -23,7 +23,7 @@ namespace VicUniIndustryProject2025LiveKit
         {
             var employees = new List<Employee>
             {
-                new Employee(4, "Tan", "tan@gmail.com", 4567),
+                new Employee(4, "Tan", "tan@gmail.com"),
                 //new Employee(2, "Bob", "bob@example.com", 2345),
                 //new Employee(1, "Alice", "alice@example.com", 1234),
                 //new Employee(3, "Charlie", "charlie@example.com", 3456)

@@ -20,10 +20,10 @@ builder.Services.AddScoped<ChatDbContext>();
 //IN MEMORY TO TEST FIRST
 var employees = new List<Employee>
             {
-                new Employee(4, "Tan", "tan@gmail.com", 4567),
-                new Employee(2, "Bob", "bob@example.com", 2345),
-                new Employee(1, "Alice", "alice@example.com", 1234),
-                new Employee(3, "Charlie", "charlie@example.com", 3456)
+                new Employee(4, "Tan", "tan@gmail.com"),
+                new Employee(2, "Bob", "bob@example.com"),
+                new Employee(1, "Alice", "alice@example.com"),
+                new Employee(3, "Charlie", "charlie@example.com")
             };
 
 var products = new List<Product>
@@ -205,7 +205,7 @@ internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary
 // --------------------------------------------------------------------
 // Entities
 // --------------------------------------------------------------------
-public record Employee(int Id, string Name, string Email, int Pin);
+public record Employee(int Id, string Name, string Email);
 
 /// <summary>
 /// Represents a visitor's record in memory.
@@ -234,8 +234,7 @@ public record Employee(int Id, string Name, string Email, int Pin);
 /// </summary>
 public record VisitorArriveMeetingRequest(
     string VisitorName,
-    string MeetingWith,
-    int Pin
+    string MeetingWith
 );
 
 /// <summary>
