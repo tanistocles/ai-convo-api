@@ -179,9 +179,16 @@ app.MapPost("/visitors/arrive-contractor", async (ChatService chatService, Visit
 
 
 
-app.MapPost("/visitors/sign-out", async (ChatDbContext _context, VisitorSignOutRequest request) =>
+app.MapPost("/visitors/sign-out", async (ChatService chatService, VisitorSignOutRequest request) =>
 {
+    var result = await chatService.VisitorSignOutAsync(request);
 
+    if (!result.Approved)
+    {
+        return Results.BadRequest(result.Message);
+    }
+
+    return Results.Ok(result.Message);
 })
 .WithName("VisitorSignOut")
 .WithOpenApi();
