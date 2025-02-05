@@ -52,9 +52,32 @@ namespace VicUniIndustryProject2025LiveKit
             return await dbContext.Visitors.ToListAsync();
         }
 
-        public async Task<List<OnSite>> GetAllOnSiteAsync()
+        public async Task<List<OnSitePeople>> GetAllOnSiteAsync()
         {
-            return await dbContext.OnSites.ToListAsync();
+            int startId = 1; 
+            var EmployeeList = await dbContext.Employees.ToListAsync();
+            var OnSiteVisitors = await dbContext.Visitors.Where(v => v.IsOnSite == true).ToListAsync();
+
+            List<OnSitePeople> toReturn = new();
+
+            foreach (var Employee in EmployeeList)
+            {
+                OnSitePeople newOnSite = new OnSitePeople(startId++, Employee.Name, "Employee");
+                toReturn.Add(newOnSite);
+            }
+
+            foreach (var Visitor in OnSiteVisitors)
+            {
+                if (Visitor.IsOnSite)
+                {
+                    OnSitePeople newOnSite = new OnSitePeople(startId++, Visitor.Name, Visitor.Reason);
+                    toReturn.Add(newOnSite);
+                }
+            }
+
+            return toReturn;
+
+            //return await dbContext.OnSites.ToListAsync();
         }
 
         public async Task<List<Visitor>> GetVisitorsOnSiteAsync()
